@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* ============ DESIGN TOKENS ============ */
+:root {
+  /* CORES BASE (LIGHT MODE) */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
+
+  /* MARCA MUSICVERSE */
+  --color-primary: #7c3aed;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #f59e0b;
+  --color-accent-foreground: #0f172a;
+  --color-secondary: #0ea5e9;
+  --color-secondary-foreground: #ffffff;
+
+  /* NEUTROS */
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #7c3aed;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  /* MUSICAIS */
+  --color-key-white: #ffffff;
+  --color-key-black: #0f172a;
+  --color-key-active: #7c3aed;
+  --color-key-root: #f59e0b;
+  --color-string: #8b7355;
+  --color-fret: #94a3b8;
+
+  /* TIPOGRAFIA */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* RAIOS */
+  --radius: 0.75rem;
+  --radius-sm: 0.375rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* SOMBRAS */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-premium: 0 20px 25px -5px rgb(124 58 237 / 0.15);
+}
+
+.dark {
+  --color-background: #0a0a14;
+  --color-foreground: #e2e8f0;
+  --color-card: #111827;
+  --color-card-foreground: #e2e8f0;
+  --color-popover: #111827;
+  --color-popover-foreground: #e2e8f0;
+
+  --color-primary: #8b5cf6;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #fbbf24;
+  --color-accent-foreground: #0f172a;
+  --color-secondary: #38bdf8;
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+  --color-ring: #8b5cf6;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+
+  --color-key-white: #e2e8f0;
+  --color-key-black: #0f172a;
+  --color-key-active: #8b5cf6;
+  --color-key-root: #fbbf24;
+}
+
+/* ============ BASE STYLES ============ */
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+/* Scrollbar premium */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-primary) 60%, transparent);
+}
+
+/* ============ THEME UTILITIES ============ */
+@theme {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-key-white: var(--color-key-white);
+  --color-key-black: var(--color-key-black);
+  --color-key-active: var(--color-key-active);
+  --color-key-root: var(--color-key-root);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-slide-down: slideDown 0.3s ease-out;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary); }
+  100% { box-shadow: 0 0 20px var(--color-primary), 0 0 30px var(--color-primary); }
+}
